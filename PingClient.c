@@ -104,7 +104,7 @@ int main(int argc, char *argv[]) {
         avg_rtt = 0.0;
     }
 
-    printf("--- %s ping statistics ---\n", server_name);
+    //printf("--- %s ping statistics ---\n", server_name);
     printf("%d packets transmitted, %d received, %d%% packet loss ",
            sent, received, (int)loss);
     if (received > 0) {
