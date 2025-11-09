@@ -90,29 +90,26 @@ int main(int argc, char *argv[]) {
         sleep(1);
     }
 
-    // double loss = ( (double) (sent - received) / (double)sent) * 100.0;
-    // double avg_rtt = (received > 0) ? (sum_rtt / (double) received) : 0.0;
+    double loss;
+    if (sent > 0) {
+        loss = ((double)(sent - received) / (double)sent) * 100.0;
+    } else {
+        loss = 0.0;
+    }
 
-    // printf("--- %s ping statistics ---\n", server_name);
-    // printf("%d packets transmitted, %d received, %d%% packet loss ",
-    //        sent, received, (int)loss);
-    // if (received > 0) {
-    //     printf("rtt min/avg/max = %.3f %.3f %.3f ms\n",
-    //            min_rtt, avg_rtt, max_rtt);
-    // }
-
-    // close(sockfd);
-    // return 0;
-    double loss = ((double)(sent - received) / (double)sent) * 100.0;
-    double avg_rtt = (received > 0) ? (sum_rtt / (double)received) : 0.0;
+    double avg_rtt;
+    if (received > 0) {
+        avg_rtt = sum_rtt / (double)received;
+    } else {
+        avg_rtt = 0.0;
+    }
 
     printf("--- %s ping statistics ---\n", server_name);
-    printf("%d packets transmitted, %d received, %.0f%% packet loss\n",
-        sent, received, loss);
-
+    printf("%d packets transmitted, %d received, %d%% packet loss ",
+           sent, received, (int)loss);
     if (received > 0) {
         printf("rtt min/avg/max = %.3f %.3f %.3f ms\n",
-            min_rtt, avg_rtt, max_rtt);
+               min_rtt, avg_rtt, max_rtt);
     }
 
     close(sockfd);
