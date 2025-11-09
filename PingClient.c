@@ -96,10 +96,10 @@ int main(int argc, char *argv[]) {
     printf("--- %s ping statistics ---\n", server_name);
     printf("%d packets transmitted, %d received, %d%% packet loss\n",
            sent, received, (int)loss);
-    if (received > 0) {
-        printf("rtt min/avg/max = %.3f %.3f %.3f ms\n",
-               min_rtt, avg_rtt, max_rtt);
-    }
+    // if (received > 0) {
+    //     printf("rtt min/avg/max = %.3f %.3f %.3f ms\n",
+    //            min_rtt, avg_rtt, max_rtt);
+    // }
 
     close(sockfd);
     return 0;
